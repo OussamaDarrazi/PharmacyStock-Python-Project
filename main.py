@@ -2,9 +2,13 @@ import tkinter as tk
 from tkinter import ttk
 from BaseDesDonnees import BDPharmacy
 
-db = BDPharmacy()
 
+
+db = BDPharmacy()
 root = tk.Tk()
+root.tk.call('source', 'forest-light.tcl') 
+style = ttk.Style()
+style.theme_use("forest-light")
 root.geometry("700x500")
 root.title("Gestion de Stock Pharmacie")
 notebook = ttk.Notebook(root)
