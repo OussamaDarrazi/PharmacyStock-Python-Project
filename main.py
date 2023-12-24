@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import *
+from tkinter import filedialog
 from BaseDesDonnees import BDPharmacy
 
 
@@ -33,6 +34,8 @@ def remplir_tableau():
         condition += "m.Description"
     elif filter_column_val.get() == "Categorie":
         condition += "C.Categorie"
+    elif filter_column_val.get() == "Prix":
+        condition += "m.Prix"
     elif filter_column_val.get() == "Fournisseur":
         condition += "F.Fournisseur"
     elif filter_column_val.get() == "Quantité":
@@ -49,8 +52,15 @@ def remplir_tableau():
     else:
         condition+= filter_value_val.get()
 
-    if filter_column_val.get() in ("Medicament", "Description", "Categorie", "Fournisseur") and filter_condition_val.get() != "Contient":
-        showerror("Erreur", f"{filter_column_val.get()} est une donnée textuelle est ne peux pas être comparée par des operateur algebrique")
+    if filter_column_val.get() in ("Medicament", "Description", "Categorie", "Fournisseur"):
+        if filter_condition_val.get() != "Contient":
+            showerror("Erreur", f"{filter_column_val.get()} est une donnée textuelle est ne peux pas être comparée par des operateurs algebriques")
+    elif filter_column_val.get() not in ("Medicament", "Description", "Categorie", "Fournisseur"):
+        if filter_condition_val.get() == "Contient":
+            showerror("Erreur", f"{filter_column_val.get()} est une donnée numerique est ne peux être comparée que par des operateurs algebriques")
+        if not filter_value_val.get().isnumeric():
+            showerror("Erreur", f"{filter_column_val.get()} est une donnée numerique est ne peux être comparée qu'à des valeurs numeriques")
+        
 
     for row in table.get_children():
         table.delete(row)
@@ -119,5 +129,24 @@ x_table_scroll.config(command=table.xview)
 # for row in data:
 #     table.insert(parent="", index=row[0], values=row)
 ###### l'ongler d'ajout
+def ajouter_depuis_csv():
+    file_path = filedialog.askopenfilename()
+    if file_path:
+        db.inserer_medicament_csv(file_path)
+        showinfo(f"Tous les données de {file_path} sont inserées!")
+
+add_tab.rowconfigure(0, weight=1)
+add_tab.rowconfigure(1, weight=1)
+add_tab.columnconfigure(0, weight=1)
+add_form = tk.Frame(add_tab)
+add_file = tk.Frame(add_tab)
+add_form.grid(row=0, column=0, sticky="nsew")
+add_file.grid(row=1, column=0, sticky="nsew")
+add_option = ttk.Combobox(add_tab, values=("Medicament", "Fournisseur", "Categorie"))
+add_option.grid(row=2, column=0, sticky="es", pady=10, padx=20)
+
+###bouton pour ajouter depuis un fichier csv 
+csv_upload_button = ttk.Button(add_file,text="Ajouter depuis un fichier CSV", command=ajouter_depuis_csv)
+csv_upload_button.pack(side=tk.TOP, anchor=tk.CENTER)
 notebook.pack(fill="both", expand=True)
 root.mainloop()
