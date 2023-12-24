@@ -150,27 +150,30 @@ add_option.bind("<<ComboboxSelected>>")
 add_option.grid(row=2, column=0, sticky="es", pady=10, padx=20)
 
 #form elements
+add_form.columnconfigure(0, weight=1)
+add_form.columnconfigure(1, weight=1)
+add_form.columnconfigure(2, weight=1)
 # medicament  ENTRY
 form_medicament = ttk.Entry(add_form)
-form_medicament.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
+form_medicament.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 # description ENTRY
 form_description = ttk.Entry(add_form)
-form_description.grid(row=0, column=1, padx=20, pady=20, sticky="nsew")
+form_description.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
 # prix ENTRY
 form_prix = ttk.Entry(add_form)
-form_prix.grid(row=0, column=2, padx=20, pady=20, sticky="nsew")
+form_prix.grid(row=0, column=2, padx=10, pady=10, sticky="nsew")
 # category combobox
-form_category = ttk.Combobox(add_form, values=db.executer_requete_select("select Categorie from Categories"))
-form_category.grid(row=1, column=0, padx=20, pady=20, sticky="nsew")
+form_category = ttk.Combobox(add_form,values=db.executer_requete_select("select Categorie from Categories order by Categorie"))
+form_category.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
 # fournisseur combobox
-form_fournisseur = ttk.Combobox(add_form, values=db.executer_requete_select("select Fournisseur from Fournisseurs"))
-form_fournisseur.grid(row=1, column=1, padx=20, pady=20, sticky="nsew")
+form_fournisseur = ttk.Combobox(add_form, values=db.executer_requete_select("select Fournisseur from Fournisseurs order by Fournisseur"))
+form_fournisseur.grid(row=1, column=1, padx=10, pady=10, sticky="nsew")
 # quantité entry
 form_quantite = ttk.Entry(add_form)
-form_quantite.grid(row=1, column=2, padx=20, pady=20, sticky="nsew")
+form_quantite.grid(row=1, column=2, padx=10, pady=10, sticky="nsew")
 # ordonance ou non combobox
 form_ordonnance = ttk.Combobox(add_form, values=("Oui", "Non"))
-form_ordonnance.grid(row=2, column=0, padx=20, pady=20, sticky="nsew")
+form_ordonnance.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
 
 ###bouton pour ajouter depuis un fichier csv 
 csv_upload_button = ttk.Button(add_file,text="Ajouter depuis un fichier CSV", command=ajouter_depuis_csv)
