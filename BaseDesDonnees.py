@@ -37,6 +37,13 @@ class BDPharmacy:
         self._cursor.execute(query)
         resultat = self._cursor.fetchall()
         return resultat
+    def inserer_fournisseur(self, nom_fournisseur, contact_fournisseur):
+        self._cursor.execute("INSERT INTO Fournisseurs (Fournisseur, Contact_Num) values (?,?)", (nom_fournisseur, contact_fournisseur))
+        self._connection.commit()
+
+    def inserer_categorie(self, nom_category):
+        self._cursor.execute("INSERT INTO Categories (Categorie) values (?)", (nom_category,))
+        self._connection.commit()
     
     def inserer_medicament(self, nom_medicament, description, prix, catergorie_id, fournisseur_id, qte, ordonnance_ou_non):
         """
@@ -61,7 +68,47 @@ class BDPharmacy:
                 nom_medicament, description, prix, categorie_id, fournisseur_id, qte, ordonnance_ou_non = row
                 self.inserer_medicament(nom_medicament, description, prix, categorie_id, fournisseur_id, qte, ordonnance_ou_non)
 
-    
-db = BDPharmacy()
 
-db.inserer_medicament("Dolipran", "kidawi kolchi", 10.34, 0, 0, 12, 0)
+#########generating dummy data
+
+# db = BDPharmacy()
+
+# categories_data = [
+#     ('Antibiotics',),
+#     ('Painkillers',),
+#     ('Vitamins',),
+#     ('Antipyretics',),
+#     ('Allergy Medications',),
+#     ('Digestive Health',),
+#     ('Cough Syrups',),
+#     ('Topical Medications',),
+#     ('Cardiovascular Drugs',),
+#     ('Anti-Inflammatory Drugs',),
+# ]
+
+# for _ in categories_data:
+#     db.inserer_categorie(*_)
+
+# fournisseurs_data = [
+#     ('SupplierA', '0610101010'),
+#     ('SupplierB', '0610101010'),
+#     ('SupplierC', '0610101010'),
+#     ('SupplierD', '0610101010'),
+#     ('SupplierE', '0610101010'),
+# ]
+
+# for _ in fournisseurs_data:
+#     db.inserer_fournisseur(*_)
+
+# import random
+# for _ in range(30):
+#     medicine_data = (
+#         f'Medicine{_}',
+#         f'Description for Medicine{_}',
+#         round(random.uniform(5.0, 100.0), 2),
+#         random.randint(1, len(categories_data)),
+#         random.randint(1, len(fournisseurs_data)),
+#         random.randint(10, 100),
+#         random.choice([0, 1]),
+#     )
+#     db.inserer_medicament(*medicine_data)
