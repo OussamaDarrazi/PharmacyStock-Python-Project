@@ -129,6 +129,7 @@ x_table_scroll.config(command=table.xview)
 # for row in data:
 #     table.insert(parent="", index=row[0], values=row)
 ###### l'ongler d'ajout
+table_to_insert = tk.StringVar()
 def ajouter_depuis_csv():
     file_path = filedialog.askopenfilename()
     if file_path:
@@ -136,14 +137,40 @@ def ajouter_depuis_csv():
         showinfo(f"Tous les données de {file_path} sont inserées!")
 
 add_tab.rowconfigure(0, weight=1)
-add_tab.rowconfigure(1, weight=1)
+add_tab.rowconfigure(2, weight=1)
 add_tab.columnconfigure(0, weight=1)
 add_form = tk.Frame(add_tab)
 add_file = tk.Frame(add_tab)
 add_form.grid(row=0, column=0, sticky="nsew")
-add_file.grid(row=1, column=0, sticky="nsew")
-add_option = ttk.Combobox(add_tab, values=("Medicament", "Fournisseur", "Categorie"))
+tk.Label(add_tab, text="------------------ OU -------------------").grid(row=1, column=0, sticky="nsew")
+add_file.grid(row=2, column=0, sticky="nsew")
+add_option = ttk.Combobox(add_tab, values=("Medicaments", "Fournisseurs", "Categories"), textvariable=table_to_insert)
+table_to_insert.set("Medicaments")
+add_option.bind("<<ComboboxSelected>>")
 add_option.grid(row=2, column=0, sticky="es", pady=10, padx=20)
+
+#form elements
+# medicament  ENTRY
+form_medicament = ttk.Entry(add_form)
+form_medicament.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
+# description ENTRY
+form_description = ttk.Entry(add_form)
+form_description.grid(row=0, column=1, padx=20, pady=20, sticky="nsew")
+# prix ENTRY
+form_prix = ttk.Entry(add_form)
+form_prix.grid(row=0, column=2, padx=20, pady=20, sticky="nsew")
+# category combobox
+form_category = ttk.Combobox(add_form, values=db.executer_requete_select("select Categorie from Categories"))
+form_category.grid(row=1, column=0, padx=20, pady=20, sticky="nsew")
+# fournisseur combobox
+form_fournisseur = ttk.Combobox(add_form, values=db.executer_requete_select("select Fournisseur from Fournisseurs"))
+form_fournisseur.grid(row=1, column=1, padx=20, pady=20, sticky="nsew")
+# quantité entry
+form_quantite = ttk.Entry(add_form)
+form_quantite.grid(row=1, column=2, padx=20, pady=20, sticky="nsew")
+# ordonance ou non combobox
+form_ordonnance = ttk.Combobox(add_form, values=("Oui", "Non"))
+form_ordonnance.grid(row=2, column=0, padx=20, pady=20, sticky="nsew")
 
 ###bouton pour ajouter depuis un fichier csv 
 csv_upload_button = ttk.Button(add_file,text="Ajouter depuis un fichier CSV", command=ajouter_depuis_csv)
