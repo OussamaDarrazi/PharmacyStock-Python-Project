@@ -2,8 +2,6 @@ import csv
 import sqlite3
 
 class BDPharmacy:
-    _instance = None
-
     def __init__(self):
         self._connection = sqlite3.connect("pharmacydb.db")
         self._cursor = self._connection.cursor()

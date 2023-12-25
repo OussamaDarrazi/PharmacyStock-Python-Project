@@ -42,11 +42,12 @@ def remplir_tableau():
         condition += "m.Quantite"
     elif filter_column_val.get() == "Ordonnance ou Pas":
         condition += "m.Ordonnace_ou_Non"
-    
+    #WHERE F.Fournisseur
     if filter_condition_val.get() == "Contient":
         condition+=" LIKE "
     else:
         condition+=" " +filter_condition_val.get() + " "
+
     if filter_condition_val.get() == "Contient":
         condition+= "'%" + filter_value_val.get() + "%'"
     else:
@@ -149,12 +150,16 @@ table_to_insert.set("Medicaments")
 add_option.bind("<<ComboboxSelected>>")
 add_option.grid(row=2, column=0, sticky="es", pady=10, padx=20)
 
+
+
+#TODO: HANDLE FORM DATA 
 #form elements
 add_form.columnconfigure(0, weight=1)
 add_form.columnconfigure(1, weight=1)
 add_form.columnconfigure(2, weight=1)
 # medicament  ENTRY
-form_medicament = ttk.Entry(add_form)
+form_medicament_var = tk.StringVar()
+form_medicament = ttk.Entry(add_form, textvariable=form_medicament_var)
 form_medicament.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 # description ENTRY
 form_description = ttk.Entry(add_form)
@@ -174,6 +179,7 @@ form_quantite.grid(row=1, column=2, padx=10, pady=10, sticky="nsew")
 # ordonance ou non combobox
 form_ordonnance = ttk.Combobox(add_form, values=("Oui", "Non"))
 form_ordonnance.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
+
 
 ###bouton pour ajouter depuis un fichier csv 
 csv_upload_button = ttk.Button(add_file,text="Ajouter depuis un fichier CSV", command=ajouter_depuis_csv)
