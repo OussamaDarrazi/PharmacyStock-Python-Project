@@ -73,7 +73,6 @@ def remplir_tableau():
     
 
 filter_frame = tk.Frame(med_tab)
-
 filter_frame.pack(fill="both", expand=True)
 
 
@@ -145,10 +144,8 @@ add_file = tk.Frame(add_tab)
 add_form.grid(row=0, column=0, sticky="nsew")
 tk.Label(add_tab, text="------------------ OU -------------------").grid(row=1, column=0, sticky="nsew")
 add_file.grid(row=2, column=0, sticky="nsew")
-add_option = ttk.Combobox(add_tab, values=("Medicaments", "Fournisseurs", "Categories"), textvariable=table_to_insert)
-table_to_insert.set("Medicaments")
-add_option.bind("<<ComboboxSelected>>")
-add_option.grid(row=2, column=0, sticky="es", pady=10, padx=20)
+
+
 
 
 
@@ -158,28 +155,48 @@ add_form.columnconfigure(0, weight=1)
 add_form.columnconfigure(1, weight=1)
 add_form.columnconfigure(2, weight=1)
 # medicament  ENTRY
-form_medicament_var = tk.StringVar()
-form_medicament = ttk.Entry(add_form, textvariable=form_medicament_var)
+med_VAR=tk.StringVar()
+form_medicament = ttk.Entry(add_form,textvariable=med_VAR)
+med_VAR.set('nom')
 form_medicament.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 # description ENTRY
-form_description = ttk.Entry(add_form)
+des_var=tk.StringVar()
+form_description = ttk.Entry(add_form,textvariable=des_var)
+des_var.set('description')
 form_description.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
 # prix ENTRY
-form_prix = ttk.Entry(add_form)
+prix_var=tk.IntVar()
+form_prix = ttk.Entry(add_form,textvariable=prix_var)
+prix_var.set('prix')
 form_prix.grid(row=0, column=2, padx=10, pady=10, sticky="nsew")
 # category combobox
-form_category = ttk.Combobox(add_form,values=db.executer_requete_select("select Categorie from Categories order by Categorie"))
+categ_var=tk.StringVar()
+rows_cate=db.executer_requete_select("select Categorie from Categories order by Categorie")
+liste_cat=[]
+for row in rows_cate :
+    liste_cat.append(row[0])
+form_category = ttk.Combobox(add_form,textvariable=categ_var,values=liste_cat)
+categ_var.set(liste_cat[0])
 form_category.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
 # fournisseur combobox
-form_fournisseur = ttk.Combobox(add_form, values=db.executer_requete_select("select Fournisseur from Fournisseurs order by Fournisseur"))
+fourn_var=tk.StringVar()
+rows_four=db.executer_requete_select("select Fournisseur from Fournisseurs order by Fournisseur")
+liste_four=[]
+for row in rows_four :
+    liste_four.append(row[0])
+form_fournisseur = ttk.Combobox(add_form,textvariable=fourn_var, values=liste_four)
+fourn_var.set(liste_four[0])
 form_fournisseur.grid(row=1, column=1, padx=10, pady=10, sticky="nsew")
 # quantité entry
-form_quantite = ttk.Entry(add_form)
+quantity_var=tk.IntVar()
+form_quantite = ttk.Entry(add_form,textvariable=quantity_var)
+quantity_var.set('quantite')
 form_quantite.grid(row=1, column=2, padx=10, pady=10, sticky="nsew")
 # ordonance ou non combobox
-form_ordonnance = ttk.Combobox(add_form, values=("Oui", "Non"))
+ordo_var=tk.StringVar()
+form_ordonnance = ttk.Combobox(add_form, values=("Oui", "Non"),textvariable=ordo_var)
+ordo_var.set('ordonnance')
 form_ordonnance.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
-
 
 ###bouton pour ajouter depuis un fichier csv 
 csv_upload_button = ttk.Button(add_file,text="Ajouter depuis un fichier CSV", command=ajouter_depuis_csv)
