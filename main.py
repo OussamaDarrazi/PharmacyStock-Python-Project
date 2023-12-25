@@ -134,10 +134,10 @@ def ajouter_depuis_csv():
     file_path = filedialog.askopenfilename()
     if file_path:
         db.inserer_medicament_csv(file_path)
-        showinfo(f"Tous les données de {file_path} sont inserées!")
+        showinfo("Info",f"Tous les données de {file_path} sont inserées!")
 
 add_tab.rowconfigure(0, weight=1)
-add_tab.rowconfigure(2, weight=1)
+add_tab.rowconfigure(2, weight=2)
 add_tab.columnconfigure(0, weight=1)
 add_form = tk.Frame(add_tab)
 add_file = tk.Frame(add_tab)
