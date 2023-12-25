@@ -165,7 +165,7 @@ form_description = ttk.Entry(add_form,textvariable=des_var)
 des_var.set('description')
 form_description.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
 # prix ENTRY
-prix_var=tk.IntVar()
+prix_var=tk.StringVar()
 form_prix = ttk.Entry(add_form,textvariable=prix_var)
 prix_var.set('prix')
 form_prix.grid(row=0, column=2, padx=10, pady=10, sticky="nsew")
@@ -188,7 +188,7 @@ form_fournisseur = ttk.Combobox(add_form,textvariable=fourn_var, values=liste_fo
 fourn_var.set(liste_four[0])
 form_fournisseur.grid(row=1, column=1, padx=10, pady=10, sticky="nsew")
 # quantité entry
-quantity_var=tk.IntVar()
+quantity_var=tk.StringVar()
 form_quantite = ttk.Entry(add_form,textvariable=quantity_var)
 quantity_var.set('quantite')
 form_quantite.grid(row=1, column=2, padx=10, pady=10, sticky="nsew")
@@ -197,7 +197,24 @@ ordo_var=tk.StringVar()
 form_ordonnance = ttk.Combobox(add_form, values=("Oui", "Non"),textvariable=ordo_var)
 ordo_var.set('ordonnance')
 form_ordonnance.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
-
+#bouton confirmation :
+def add_to_db():
+    fourni_id=db._cursor.execute('select id from Fournisseurs where  Fournisseur = (?)',(fourn_var.get(),)).fetchone()[0]
+    categ_id=db._cursor.execute('select id from Categories where  Categorie = (?)',(categ_var.get(),)).fetchone()[0]
+    ord_ind=1 if ordo_var.get()=='Oui' else 0
+    if not prix_var.get().isnumeric() or not quantity_var.get().isnumeric():
+        showerror("Error", "Prix et Quantité sont des données numeriques")
+    elif len(db.executer_requete_select(f"select * from Medicaments where Nom_medicament = '{med_VAR.get()}'")) >0:
+        if not askyesno("Warning", f"{med_VAR.get()} est deja dans la base de données, Voulez vous l'ajouter?"):
+            showinfo("Info", f"{med_VAR.get()} n'a pas été ajouté")
+        else:
+            db.inserer_medicament(med_VAR.get(),des_var.get(),prix_var.get(),categ_id,fourni_id,quantity_var.get(),ord_ind)
+            showinfo("Info", f"{med_VAR.get()} a été ajouté")
+    else:
+        db.inserer_medicament(med_VAR.get(),des_var.get(),prix_var.get(),categ_id,fourni_id,quantity_var.get(),ord_ind)
+        showinfo("Info", f"{med_VAR.get()} a été ajouté")
+confirmation = ttk.Button(add_form, text='add to the table', command=add_to_db)
+confirmation.grid(row=2,column=2,padx=10,pady=10,sticky='se')
 ###bouton pour ajouter depuis un fichier csv 
 csv_upload_button = ttk.Button(add_file,text="Ajouter depuis un fichier CSV", command=ajouter_depuis_csv)
 csv_upload_button.pack(side=tk.TOP, anchor=tk.CENTER)
