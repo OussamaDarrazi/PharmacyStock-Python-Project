@@ -213,7 +213,7 @@ def add_to_db():
     else:
         db.inserer_medicament(med_VAR.get(),des_var.get(),prix_var.get(),categ_id,fourni_id,quantity_var.get(),ord_ind)
         showinfo("Info", f"{med_VAR.get()} a été ajouté")
-confirmation = ttk.Button(add_form, text='add to the table', command=add_to_db)
+confirmation = ttk.Button(add_form, text='Ajouter', command=add_to_db)
 confirmation.grid(row=2,column=2,padx=10,pady=10,sticky='se')
 ###bouton pour ajouter depuis un fichier csv 
 csv_upload_button = ttk.Button(add_file,text="Ajouter depuis un fichier CSV", command=ajouter_depuis_csv)
