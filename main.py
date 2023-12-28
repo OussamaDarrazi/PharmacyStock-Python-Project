@@ -128,6 +128,10 @@ x_table_scroll.config(command=table.xview)
 
 # for row in data:
 #     table.insert(parent="", index=row[0], values=row)
+ttk.Label(med_tab, text="Made with ❤️ by O. Darrazi, I. Moufatih, I. Goumrane", font=("Segoe UI Emoji", 10)).pack(side=tk.RIGHT)
+ttk.Label(add_tab, text="Made with ❤️ by O. Darrazi, I. Moufatih, I. Goumrane", font=("Segoe UI Emoji", 10)).grid(row=3, column=0, sticky="e")
+
+
 ###### l'ongler d'ajout
 table_to_insert = tk.StringVar()
 def ajouter_depuis_csv():
@@ -149,7 +153,6 @@ add_file.grid(row=2, column=0, sticky="nsew")
 
 
 
-#TODO: HANDLE FORM DATA 
 #form elements
 add_form.columnconfigure(0, weight=1)
 add_form.columnconfigure(1, weight=1)
