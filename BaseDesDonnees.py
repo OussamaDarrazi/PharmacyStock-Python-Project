@@ -58,7 +58,7 @@ class BDPharmacy:
         Inserer un medicament depuis un fichier csv
 
         """
-        with open(csv_file, 'r') as file:
+        with open(csv_file, 'r', encoding="UTF-8") as file:
             csv_reader = csv.reader(file)
             next(csv_reader)
 
@@ -72,41 +72,31 @@ class BDPharmacy:
 # db = BDPharmacy()
 
 # categories_data = [
-#     ('Antibiotics',),
-#     ('Painkillers',),
-#     ('Vitamins',),
-#     ('Antipyretics',),
-#     ('Allergy Medications',),
-#     ('Digestive Health',),
-#     ('Cough Syrups',),
-#     ('Topical Medications',),
-#     ('Cardiovascular Drugs',),
-#     ('Anti-Inflammatory Drugs',),
+#     ('Analgesiques',),
+#     ('Anti-inflammatoires',),
+#     ('Antibiotiques',),
+#     ('Antihistaminiques',),
+#     ('Anticoagulants',),
+#     ('Antiplaquettaires',),
+#     ('Antidiabétiques',),
+#     ('Vitamines',),
+#     ('Suppléments alimentaires',),
+#     ('Anxiolytiques',),
+#     ('Corticostéroïdes',),
 # ]
+
+# fournisseurs_data = [
+#     ('FournisseurA', '0610101010'),
+#     ('FournisseurB', '0610101010'),
+#     ('FournisseurC', '0610101010'),
+#     ('FournisseurD', '0610101010'),
+#     ('FournisseurE', '0610101010'),
+# ]
+
 
 # for _ in categories_data:
 #     db.inserer_categorie(*_)
 
-# fournisseurs_data = [
-#     ('SupplierA', '0610101010'),
-#     ('SupplierB', '0610101010'),
-#     ('SupplierC', '0610101010'),
-#     ('SupplierD', '0610101010'),
-#     ('SupplierE', '0610101010'),
-# ]
-
 # for _ in fournisseurs_data:
 #     db.inserer_fournisseur(*_)
 
-# import random
-# for _ in range(30):
-#     medicine_data = (
-#         f'Medicine{_}',
-#         f'Description for Medicine{_}',
-#         round(random.uniform(5.0, 100.0), 2),
-#         random.randint(1, len(categories_data)),
-#         random.randint(1, len(fournisseurs_data)),
-#         random.randint(10, 100),
-#         random.choice([0, 1]),
-#     )
-#     db.inserer_medicament(*medicine_data)
