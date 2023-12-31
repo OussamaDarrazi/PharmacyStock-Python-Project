@@ -1,0 +1,36 @@
+Nom_Medicament,Description,Prix,Categorie_Id,Fournisseur_Id,Quantite,Ordonnance_ou_Non
+Paracétamol,Analgésique commun,5.99,1,101,100,1
+Ibuprofène,Anti-inflammatoire non stéroïdien,7.49,2,102,50,1
+Amoxicilline,Antibiotique,12.99,3,103,75,1
+Loratadine,Antihistaminique,4.99,4,104,30,0
+Oméprazole,Inhibiteur de la pompe à protons,9.99,5,105,20,0
+Aspirine,Antiagrégant plaquettaire,3.99,1,101,80,1
+Insuline,Médicament contre le diabète,20.99,6,106,25,1
+Vitamine C,Supplément alimentaire,6.99,7,107,50,0
+Atorvastatine,Médicament abaissant le cholestérol,15.99,8,108,40,1
+Metformine,Médicament contre le diabète,10.99,6,106,60,1
+Cétirizine,Allègement des allergies,8.49,4,104,45,0
+Ranitidine,Réducteur d'acidité,7.99,5,105,35,0
+Warfarine,Anticoagulant,14.99,1,101,15,1
+Hydrochlorothiazide,Diurétique,11.49,8,108,55,1
+Clopidogrel,Antiplaquettaires,18.99,2,102,22,1
+Fluoxétine,Inhibiteur sélectif de la recapture de la sérotonine,9.49,3,103,40,0
+Levothyroxine,Hormone thyroïdienne,13.49,7,107,28,0
+Supplément de magnésium,Supplément alimentaire,5.49,9,109,60,0
+Diazépam,Anxiolytique,17.99,10,110,18,1
+Céphalexine,Antibiotique,14.49,3,103,30,1
+Codéine,Analgésique,8.99,1,101,25,1
+Naproxène,Anti-inflammatoire non stéroïdien,6.49,2,102,42,0
+Mélatonine,Aide au sommeil,4.49,11,111,50,0
+Sertraline,Inhibiteur sélectif de la recapture de la sérotonine,11.99,10,110,20,0
+Méthylphénidate,Stimulant,15.49,12,112,15,1
+Albutérol,Bronchodilatateur à action brève,13.99,13,113,35,0
+Acide folique,Supplément alimentaire,3.49,7,107,75,0
+Lisinopril,Inhibiteur de l'enzyme de conversion de l'angiotensine,9.99,8,108,48,1
+Citalopram,Inhibiteur sélectif de la recapture de la sérotonine,7.99,10,110,30,0
+Supplément de calcium,Supplément alimentaire,6.49,9,109,65,0
+Tramadol,Analgésique opioïde,12.49,1,101,20,1
+Clonazépam,Anxiolytique,14.99,10,110,22,1
+Dexaméthasone,Corticostéroïde,19.99,4,104,10,1
+Escitalopram,Inhibiteur sélectif de la recapture de la sérotonine,10.99,10,110,28,0
+Prédnisone,Corticostéroïde,8.49,4,104,40,1
