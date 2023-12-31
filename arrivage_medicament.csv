@@ -1,6 +1,6 @@
 Nom_Medicament,Description,Prix,Categorie_Id,Fournisseur_Id,Quantite,Ordonnance_ou_Non
 Enalapril,Inhibiteur de l'enzyme de conversion de l'angiotensine,9.79,8,108,33,1
-Magnesium Oxide,Supplément alimentaire,4.29,9,109,70,0
+Magnesium Oxide,Supplï¿½ment alimentaire,4.29,9,109,70,0
 Azithromycin,Antibiotique,16.49,3,103,25,1
 Hydroxyzine,Anxiolytique,12.89,10,110,18,0
 Montelukast,Leukotriene receptor antagonist,14.99,4,104,40,1
