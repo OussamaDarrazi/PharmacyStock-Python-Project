@@ -1,10 +1,11 @@
-Paracetamol,Common pain reliever,5.99,1,101,100,1
-Ibuprofen,Nonsteroidal anti-inflammatory drug,7.49,2,102,50,1
-Amoxicillin,Antibiotic,12.99,3,103,75,1
-Loratadine,Antihistamine,4.99,4,104,30,0
-Omeprazole,Proton pump inhibitor,9.99,5,105,20,0
-Aspirin,Blood thinner,3.99,1,101,80,1
-Insulin,Diabetes medication,20.99,6,106,25,1
-Vitamin C,Dietary supplement,6.99,7,107,50,0
-Atorvastatin,Cholesterol-lowering drug,15.99,8,108,40,1
-Metformin,Diabetes medication,10.99,6,106,60,1
+Nom_Medicament,Description,Prix,Categorie_Id,Fournisseur_Id,Quantite,Ordonnance_ou_Non
+Enalapril,Inhibiteur de l'enzyme de conversion de l'angiotensine,9.79,8,108,33,1
+Magnesium Oxide,Supplément alimentaire,4.29,9,109,70,0
+Azithromycin,Antibiotique,16.49,3,103,25,1
+Hydroxyzine,Anxiolytique,12.89,10,110,18,0
+Montelukast,Leukotriene receptor antagonist,14.99,4,104,40,1
+Nitroglycerin,Vasodilator,7.59,2,102,15,1
+Ezetimibe,Cholesterol absorption inhibitor,18.99,8,108,28,1
+Bisacodyl,Laxative,5.79,6,106,50,0
+Calcitonin,Thyroid hormone,11.59,7,107,20,0
+Hydrocortisone,Corticosteroid,6.79,4,104,38,1
